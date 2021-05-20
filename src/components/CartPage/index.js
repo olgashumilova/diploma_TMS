@@ -1,13 +1,12 @@
-import React, { Component } from 'react'
+import React from 'react'
 
-class CartPage extends Component {
-    render() {
-        return (
-            <div>
-                <p>Cart Page</p>
-            </div>
-        )
-    }
+function CartPage() {
+    console.log('Hello cart')
+    return (
+        <div className = 'cart'>
+            <p>Корзина пуста</p>
+        </div>
+    )
 }
 
 export default CartPage

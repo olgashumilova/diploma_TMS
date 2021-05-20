@@ -1,12 +1,27 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import App from './App';
+import { Provider } from 'react-redux';
 import reportWebVitals from './reportWebVitals';
+
+import './index.css';
+
+import createStore from './store'
+import { ACTION_TYPES } from './const';
+
+const store = createStore()
+
+setTimeout(() => {
+  store.dispatch ({
+      type: "ACTION_TYPES.GET_GOODS_SUCCESS"
+  })
+}, 1000);
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Provider store = {createStore()}>
+      <App />
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );

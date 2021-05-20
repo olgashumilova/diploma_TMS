@@ -3,6 +3,29 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 10%;
-    font-family: 'Roboto';
+    padding-top: 150px;
+    padding-bottom: 100px;
+    font-family: 'Nunito';
+    font-weight: 400;
+    font-size: 18px;
+}
+
+.main__addresses-header {
+    font-weight: 600;
+    font-size: 20px;
+    padding-bottom: 15px;
+    text-decoration: underline;
+}
+
+.main__addresses-title {
+    font-weight: 600;
+    padding: 15px;
+}
+
+.main__addresses-text {
+    padding: 3px;
+}
+
+.main__addresses-map {
+    margin-top: 30px;
 }
