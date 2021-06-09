@@ -3,13 +3,7 @@ import MainPage from './components/MainPage'
 import GoodsPage from './components/GoodsPage'
 import AddressesPage from './components/AddressesPage'
 import CartPage from './components/CartPage'
-
-import SubscribeComponent from './components/SubscribeComponent'
-// Actions
-// import { getGoods } from './actions'
-
-//Reducers
-// import GoodsReducer from './reducers/GoodsReducer'
+import FooterComponent from './footer_form'
 
 // Main scss
 import './App.scss'
@@ -23,12 +17,6 @@ import './source/scss/components/GoodsPage/_goodspage.scss'
 import './source/scss/components/AddressesPage/_addressespage.scss'
 import './source/scss/components/CartPage/_cartpage.scss'
 
-// Icons
-import instagramIcon from './source/img/icons/instagram-icon.png'
-import facebookIcon from './source/img/icons/facebook-icon.png'
-import twitterIcon from './source/img/icons/twitter-icon.png'
-
-
 // Router
 import {
   BrowserRouter as Router,
@@ -37,7 +25,12 @@ import {
   Link
 } from "react-router-dom";
 
+// Hook
+import { useSelector } from 'react-redux';
+
 export default function App() {
+
+  const totalQuantity = useSelector(state => state.totalQuantity)
 
   return (
     <Router>
@@ -60,14 +53,32 @@ export default function App() {
           <button className = 'button container'> 
             <Link className = 'button__link' to="/addresses"><h2 className = 'button__title'>Адреса</h2></Link>
           </button>
-
-          <button className = 'button header__cart container'> 
-            <Link className = 'button__link' to="/cart"><p>1{}</p></Link> 
-          </button>
-
+          
+          <Link className = 'button__link' to="/cart">
+            <button className = 'button header__cart container'> 
+              {totalQuantity}
+            </button>
+          </Link> 
         </div>
 
-        <button className ="hamburger"></button>
+        <button className = "hamburger" onClick = {() => {
+          let menu = document.getElementsByClassName('button')
+          let mainHeader = document.getElementsByClassName('header')
+          let headerContainer = document.getElementsByClassName('header__container')
+
+          for (let j = 0; j < mainHeader.length; j++) {
+            mainHeader[j].style.height === '100px' ? mainHeader[j].style.height = '250px' : mainHeader[j].style.height = '100px'
+          }
+
+          for (let k = 0; k < headerContainer.length; k++) {
+            headerContainer[k].style.flexDirection === 'row' ? headerContainer[k].style.flexDirection = 'column' : headerContainer[k].style.flexDirection = 'row'
+            headerContainer[k].style.flexWrap === 'wrap' ? headerContainer[k].style.flexWrap = 'inherit' : headerContainer[k].style.flexWrap = 'wrap'
+          }
+
+          for (let i = 0; i < menu.length; i++) {
+            menu[i].style.display === 'none' ? menu[i].style.display = 'flex' : menu[i].style.display = 'none'
+          }       
+        }}></button>
 
       </header>
 
@@ -85,44 +96,14 @@ export default function App() {
             <Addresses />
           </Route>
 
-          <Route path="/">
+          <Route exact path="/">
             <Home />
           </Route>
 
         </Switch>
       </div>
 
-      <footer className = 'footer'>
-        <div className = 'footer__container'>
-            <div className = 'footer__inner-container'>
-              <p className = 'footer__title'>Будем на связи</p>
-              <div className = 'icons-container'>
-                  <a href = 'https://www.facebook.com/'><img src = {facebookIcon} alt = 'Facebook icon'/></a>
-                  <a href = 'https://twitter.com/?lang=ru'><img src = {twitterIcon} alt = 'Twitter icon'/></a>
-                  <a href = 'https://www.instagram.com/?hl=ru'><img src = {instagramIcon} alt = 'Instagram icon'/></a>
-              </div>
-            </div>
-            <div className = 'footer__inner-container'>
-              <p className = 'footer__title'>Давайте дружить</p>
-              <input 
-                  className = 'footer__email'
-                  type = 'text' 
-                  placeholder = 'example@email.com'
-                  // onChange = {(event) => onChangeCredentials(event.target.value, 'email')}
-                  // value = {email}
-              />
-              <button className = 'footer__button'>Ok</button>
-            </div>
-            <div className = 'footer__inner-container'>
-              <p className = 'footer__title'>Нужна помощь?</p>
-              <p>+7 (495) 000-00-00</p>
-              <p>info@mysite.ru</p>
-            </div>
-          </div>
-          <div className = 'footer__container'>
-              <p className = 'footer__last-line'>&#169; 2021 МАГАЗИН ОДЕЖДЫ ULTRAVIOLET</p>
-          </div>
-      </footer>
+      <div>{FooterComponent()}</div>
       
     </Router>
   );
