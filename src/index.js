@@ -3,23 +3,23 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import { Provider } from 'react-redux';
 import reportWebVitals from './reportWebVitals';
+import { createStore, applyMiddleware, compose } from 'redux';
+import thunk from 'redux-thunk'
+import reducer from './reducers'
 
 import './index.css';
 
-import createStore from './store'
-import { ACTION_TYPES } from './const';
-
-const store = createStore()
-
-setTimeout(() => {
-  store.dispatch ({
-      type: "ACTION_TYPES.GET_GOODS_SUCCESS"
-  })
-}, 1000);
+const store = createStore(
+  reducer,
+  compose(
+    applyMiddleware(thunk),
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  )
+);
 
 ReactDOM.render(
   <React.StrictMode>
-    <Provider store = {createStore()}>
+    <Provider store = {store}>
       <App />
     </Provider>
   </React.StrictMode>,
