@@ -3,7 +3,7 @@ import MainPage from './components/MainPage'
 import GoodsPage from './components/GoodsPage'
 import AddressesPage from './components/AddressesPage'
 import CartPage from './components/CartPage'
-import FooterComponent from './components/FooterPage'
+import FooterComponent from './components/FooterComponent'
 
 // Main scss
 import './App.scss'
