@@ -62,23 +62,19 @@ function CartPage() {
                             
                             <div className = 'cart__full-item'key ={`${item.id}${index}`}>
 
-                                <div>
+                                <div className = 'cart__full-item-container'>
                                     <img className = 'cart__full-item-image'src = {item.image} alt = 'item'></img>
-                                </div>
-                                <div className = 'cart__full-item-name'>
-                                    <p key ={`${item.id}${index}`}>
+                                    <p key = {`${item.id}${index}`}>
                                         {item.name}
                                     </p>
-                                </div>
-                                <div className = 'cart__full-item-price'>
                                     <p>{item.price}$</p>
-                                </div>
-                                <div className = 'cart__full-item-button'>
-                                    <button
-                                        onClick = {() => dispatch(removeItemFromCart(item.id))}>
-                                            x
-                                    </button>
-                                </div>
+                                    <div className = 'cart__full-item-button'>
+                                        <button
+                                            onClick = {() => dispatch(removeItemFromCart(index))}>
+                                                x
+                                        </button>
+                                    </div>
+                                </div>                            
                             </div>
                         )   
                     })}
