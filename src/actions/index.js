@@ -5,9 +5,9 @@ export const addItemToCart = (item) => ({
     payload: item,
 });
 
-export const removeItemFromCart = (id) => ({
+export const removeItemFromCart = (index) => ({
     type: ACTION_TYPES.REMOVE_ITEM,
-    payload: { id: id },
+    payload: index ,
 });
 
 export const decreaseQuantity = (item) => ({
