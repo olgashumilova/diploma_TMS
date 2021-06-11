@@ -33,7 +33,6 @@ const reducer = (state = initialState, action) => {
       }
     }
     case ACTION_TYPES.REMOVE_ITEM: {
-      console.log(action.payload);
       return {
         ...state,
         cart: state.cart.filter((item, index) => index !== action.payload),
