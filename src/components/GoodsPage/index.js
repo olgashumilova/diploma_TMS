@@ -48,7 +48,6 @@ function GoodsPage () {
                                 className = 'goods-page__button item-container' 
                                 onClick = {() => {
                                     dispatch(addItemToCart(item),
-                                    // dispatch(increaseQuantity(item))
                                     )}}>
                                     В корзину
                             </button>
@@ -72,7 +71,7 @@ function GoodsPage () {
 
                                 <button className = 'goods-page__current-item-btn'
                                     onClick = {() => {
-                                        if (itemCount > 0) {
+                                        if (itemCount > 1) {
                                             setCount(itemCount - 1)
                                             dispatch(decreaseQuantity(currentItem))
                                         } else {
@@ -100,8 +99,7 @@ function GoodsPage () {
                                         if (itemCount === 0) {
                                             swal('Укажите число товара')
                                         } else {
-                                            dispatch(addItemToCart(currentItem),
-                                            console.log(currentItem.price * itemCount),
+                                            dispatch(addItemToCart(currentItem),   
                                             )
                                         }
                                     }}>
