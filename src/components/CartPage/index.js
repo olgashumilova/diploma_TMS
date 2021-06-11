@@ -136,8 +136,8 @@ function CartPage() {
                         <button 
                             className = 'cart__full-details-lower-button'
                             onClick = {async() => {
-                                const response = await axios.post('http://localhost:3001/userdata', 
-                                {userName, surname, phone, address})
+                                const response = await axios.post('http://localhost:3001/order', 
+                                {userName, surname, phone, address, cart})
                                 swal(response.data);
                             }}>
                                 Оформить заказ
