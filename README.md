@@ -11,3 +11,5 @@ Built with:
 - React-Yandex-Maps
 - Redux-logger
 - Sweetalert
+
+Server for this project is here - https://github.com/olgashumilova/server_koa.git
