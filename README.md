@@ -1,3 +1,13 @@
 # Online clothing shop
 
-This project is based on React
+Built with:
+
+- React
+- Redux
+- React-Redux
+- React-Router-Dom
+- Koa-server
+- Axios
+- React-Yandex-Maps
+- Redux-logger
+- Sweetalert
